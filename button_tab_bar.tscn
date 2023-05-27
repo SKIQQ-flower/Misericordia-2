@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjcu58kv3m1qq"]
+
+[ext_resource type="Texture2D" uid="uid://dfgdj6rdljkpu" path="res://musical-notes.svg" id="1_7bfer"]
+[ext_resource type="Script" path="res://button_tab_bar.gd" id="1_ftkgb"]
+[ext_resource type="Texture2D" uid="uid://dibfk52e8tywv" path="res://house.svg" id="2_tduw8"]
+[ext_resource type="Texture2D" uid="uid://d0e755fbxsij" path="res://shopping-cart.svg" id="3_d40oa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51svn"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6hhf"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="Theme" id="Theme_sn1av"]
+Button/constants/h_separation = 5
+Button/font_sizes/font_size = 37
+Button/styles/hover = SubResource("StyleBoxFlat_51svn")
+Button/styles/normal = SubResource("StyleBoxFlat_51svn")
+Button/styles/pressed = SubResource("StyleBoxFlat_j6hhf")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_vu7lm"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 720.0
+offset_bottom = 51.0
+focus_mode = 2
+theme = SubResource("Theme_sn1av")
+script = ExtResource("1_ftkgb")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vu7lm")
+text = "Músicas"
+icon = ExtResource("1_7bfer")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vu7lm")
+text = "Casa"
+icon = ExtResource("2_tduw8")
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vu7lm")
+text = "Loja"
+icon = ExtResource("3_d40oa")

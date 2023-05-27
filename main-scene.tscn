@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://lk8u5m7fi1gm"]
+
+[ext_resource type="Texture2D" uid="uid://ddm202aco0prr" path="res://Mascotes/Misericórdia Original.png" id="1_2bnvg"]
+[ext_resource type="Script" path="res://main-scene.gd" id="1_4yxtp"]
+[ext_resource type="PackedScene" uid="uid://bjcu58kv3m1qq" path="res://button_tab_bar.tscn" id="3_26ptx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57b6f"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Theme" id="Theme_2dfwc"]
+TabContainer/styles/panel = SubResource("StyleBoxFlat_57b6f")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4yxtp")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.95
+theme = SubResource("Theme_2dfwc")
+tabs_visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="HBoxContainer" parent="TabContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+alignment = 1
+
+[node name="misericordia" type="TextureRect" parent="TabContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_2bnvg")
+expand_mode = 5
+
+[node name="nome" type="RichTextLabel" parent="TabContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "[center]Misericordia Original[/center]"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center][rainbow sat=0.5 freq=2][wave freq=20 amp=40](Clique na imagem para trocar o mascote)[/wave][/rainbow][/center]"
+fit_content = true
+
+[node name="HBoxContainer" parent="." instance=ExtResource("3_26ptx")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.956
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.319946
+offset_right = 0.0
+offset_bottom = 0.0
+
+[connection signal="gui_input" from="TabContainer/VBoxContainer/CenterContainer/misericordia" to="." method="_on_texture_rect_gui_input"]
+[connection signal="new_selected" from="HBoxContainer" to="." method="_on_h_box_container_new_selected"]
